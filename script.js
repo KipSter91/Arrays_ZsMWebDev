@@ -44,3 +44,16 @@ console.log([...arr, ...arr4]);
 
 //JOIN METHOD (doesn't mutate the original arrays)
 console.log(letters.join(' - '));
+
+//AT METHOD
+const arr5 = [1, 2, 3, 4, 5]
+//these are below the same, it's up to the developer preference, with the at method looks modern
+console.log(arr5[1]);
+console.log(arr5.at(1));
+
+//if we want to get the last element of the array
+console.log(arr5[arr5.length - 1]);
+console.log(arr5.slice(-1)[0]);
+console.log(arr5.at(-1));
+//this method works with strings as well
+console.log('Barbara'.at(-1));
