@@ -1,15 +1,4 @@
 'use strict';
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
-// LECTURES
-
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
-
-/////////////////////////////////////////////////
 
 let arr = ['a', 'b', 'c', 'd', 'e', 'f'];
 //SLICE METHOD (doesn't mutate the original arrays)
@@ -76,4 +65,22 @@ movements.forEach((mov, i, arr) => mov > 0
   ?
   console.log(`Movement ${i + 1}: You just deposited ${mov} euro`)
   :
-  console.log(`Movement ${i + 1}: You just withdrew ${Math.abs(mov)} euro`))
+  console.log(`Movement ${i + 1}: You just withdrew ${Math.abs(mov)} euro`));
+
+//forEach with Maps and Sets
+const currencies = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+]);
+
+//MAP
+currencies.forEach((value, key, map) => {
+  console.log(`${key}: ${value}`);
+});
+
+//SET (A Set has no index so the standard arguments will be value, _, set)
+const currenciesUnique = new Set(['GBP', 'GBP', 'USD', 'USD', 'EUR', 'USD', 'EUR', 'USD', 'EUR', 'EUR', 'EUR', 'GBP']);
+currenciesUnique.forEach((value, _, set) => {
+  console.log(`${value}: ${value}`);
+});
