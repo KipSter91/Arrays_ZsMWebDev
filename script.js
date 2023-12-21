@@ -9,8 +9,6 @@ const currencies = new Map([
   ['GBP', 'Pound sterling'],
 ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-
 /////////////////////////////////////////////////
 
 let arr = ['a', 'b', 'c', 'd', 'e', 'f'];
@@ -57,3 +55,25 @@ console.log(arr5.slice(-1)[0]);
 console.log(arr5.at(-1));
 //this method works with strings as well
 console.log('Barbara'.at(-1));
+
+//forEach loop
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+//solution with for-of loop
+console.log('solution with for-of loop'.padStart(35, '-').padEnd(55, '-'));
+
+for (const [i, movement] of movements.entries()) {
+  movement > 0
+    ?
+    console.log(`Movement ${i + 1}: You just deposited ${movement} euro`)
+    :
+    console.log(`Movement ${i + 1}: You just withdrew ${movement.toString().slice(1)} euro`)
+}
+
+//solution with forEach ==> THERE IS NO POSSIBILITY TO USE BREAK OR CONTINUE WITH FOREACH!!!!!!!!!!!!!!
+console.log('solution with forEach'.padStart(35, '-').padEnd(55, '-'));
+
+movements.forEach((mov, i, arr) => mov > 0
+  ?
+  console.log(`Movement ${i + 1}: You just deposited ${mov} euro`)
+  :
+  console.log(`Movement ${i + 1}: You just withdrew ${Math.abs(mov)} euro`))
