@@ -128,3 +128,40 @@ console.log('Check data 1'.padStart(35, '-').padEnd(55, '-'));
 checkDogs(dataJ1, dataK1)
 console.log('Check data 2'.padStart(35, '-').padEnd(55, '-'));
 checkDogs(dataJ2, dataK2)
+
+//Data transformations: map, filter, reduce
+//1) MAP METHOD
+const movements2 = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const eurToUsd = 1.1;
+
+//with map method
+const movementUSD = movements2.map(function (mov) {
+  return mov * eurToUsd
+})
+console.log(movementUSD);
+
+//with map and arrow
+const movementsUSD2 = movements2.map(mov => mov * eurToUsd)
+console.log(movementsUSD2);
+
+//with for of loop
+const movementsUSD3 = []
+for (const mov of movements2) {
+  movementsUSD3.push(mov * eurToUsd);
+}
+console.log(movementsUSD3);
+
+const movementsDescriptions = movements2.map((mov, i, arr) => {
+  return mov > 0
+    ?
+    (`Movement ${i + 1}: You deposited ${mov} euro`)
+    :
+    (`Movement ${i + 1}: You withdrew ${mov.toString().slice(1)} euro`)
+});
+console.log(movementsDescriptions);
+
+//shorter version
+const movementsDescriptions2 = movements2.map((mov, i) => {
+  return `Movement ${i + 1}: You ${(mov > 0 ? 'deposited' : 'withdrew')} ${Math.abs(mov)} euro`
+})
+console.log(movementsDescriptions2);
