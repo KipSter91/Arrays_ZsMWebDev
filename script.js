@@ -199,3 +199,18 @@ for (const movement of movements2) {
   balance3 += movement;
 }
 console.log(balance3);
+
+//define with reduce method the maximum value of the array
+//standard style
+const maxValue = movements2.reduce(function (acc, cur, i, arr) {
+  if (acc > cur) {
+    return acc;
+  } else {
+    return cur
+  }
+}, movements2[0]);
+console.log(maxValue);
+
+//shorter style: arrow function and conditional (ternary) operator
+const maxValue2 = movements2.reduce((acc, cur) => acc > cur ? acc : cur, movements2[0])
+console.log(maxValue2);
