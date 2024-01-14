@@ -165,3 +165,17 @@ const movementsDescriptions2 = movements2.map((mov, i) => {
   return `Movement ${i + 1}: You ${(mov > 0 ? 'deposited' : 'withdrew')} ${Math.abs(mov)} euro`
 })
 console.log(movementsDescriptions2);
+
+//2) FILTER METHOD
+//shorter (arrow style)
+const deposits = movements2.filter((mov) => mov > 0)
+
+//longer standard style
+const deposits2 = movements2.filter(function (mov) {
+  return mov > 0
+})
+console.log(deposits, deposits2);
+
+
+const withdrawals = movements2.filter((mov) => mov < 0)
+console.log(withdrawals);
