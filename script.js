@@ -173,9 +173,29 @@ const deposits = movements2.filter((mov) => mov > 0)
 //longer standard style
 const deposits2 = movements2.filter(function (mov) {
   return mov > 0
-})
+});
 console.log(deposits, deposits2);
 
 
-const withdrawals = movements2.filter((mov) => mov < 0)
+const withdrawals = movements2.filter((mov) => mov < 0);
 console.log(withdrawals);
+
+//3) REDUCE METHOD
+//accumulator ==> SNOWBALL ( It's a good practice to always provide an initial value when using reduce() to ensure predictable behavior, especially if the array might be empty.)
+//standard length and style
+const balance = movements2.reduce(function (acc, cur, i, arr) {
+  console.log(`Iteration ${i}: ${acc}`);
+  return acc + cur
+}, 0);
+console.log(balance);
+
+//shorter style with arrow function
+const balance2 = movements2.reduce((acc, cur) => acc + cur, 0)
+console.log(balance2);
+
+//Manually with for-of loop
+let balance3 = 0;
+for (const movement of movements2) {
+  balance3 += movement;
+}
+console.log(balance3);
