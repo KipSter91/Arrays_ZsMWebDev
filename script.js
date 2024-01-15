@@ -86,48 +86,6 @@ currenciesUnique.forEach((value, _, set) => {
 });
 
 
-///////////////////////////////////////
-// Coding Challenge #1
-/* 
-Julia and Kate are doing a study on dogs. So each of them asked 5 dog owners about their dog's age, and stored the data into an array (one array for each). For now, they are just interested in knowing whether a dog is an adult or a puppy. A dog is an adult if it is at least 3 years old, and it's a puppy if it's less than 3 years old.
-
-Create a function 'checkDogs', which accepts 2 arrays of dog's ages ('dogsJulia' and 'dogsKate'), and does the following things:
-
-1. Julia found out that the owners of the FIRST and the LAST TWO dogs actually have cats, not dogs! So create a shallow copy of Julia's array, and remove the cat ages from that copied array (because it's a bad practice to mutate function parameters)
-2. Create an array with both Julia's (corrected) and Kate's data
-3. For each remaining dog, log to the console whether it's an adult ("Dog number 1 is an adult, and is 5 years old") or a puppy ("Dog number 2 is still a puppy 🐶")
-4. Run the function for both test datasets
-
-HINT: Use tools from all lectures in this section so far 😉
-
-TEST DATA 1: Julia's data [3, 5, 2, 12, 7], Kate's data [4, 1, 15, 8, 3]
-TEST DATA 2: Julia's data [9, 16, 6, 8, 3], Kate's data [10, 5, 6, 1, 4]
-
-GOOD LUCK 😀
-*/
-console.log('Coding challenge 1 (Working with Arrays)'.padStart(35, '-').padEnd(55, '-'));
-//data from Julia
-const dataJ1 = [3, 5, 2, 12, 7];
-const dataJ2 = [9, 16, 6, 8, 3];
-
-//data fron Kate
-const dataK1 = [4, 1, 15, 8, 3];
-const dataK2 = [10, 5, 6, 1, 4];
-
-const checkDogs = (dogsJulia, dogsKate) => {
-  dogsJulia.splice(-2);
-  const corrJulData = dogsJulia.slice(-2);
-  const allAges = corrJulData.concat(dogsKate);
-  allAges.forEach((age, i, arr) => age >= 3
-    ?
-    console.log(`Dog number ${i + 1} is an adult, and is ${age} years old`)
-    :
-    console.log(`Dog number ${i + 1} is still a puppy 🐶`))
-}
-console.log('Check data 1'.padStart(35, '-').padEnd(55, '-'));
-checkDogs(dataJ1, dataK1)
-console.log('Check data 2'.padStart(35, '-').padEnd(55, '-'));
-checkDogs(dataJ2, dataK2)
 
 //Data transformations: map, filter, reduce
 //1) MAP METHOD
@@ -215,6 +173,50 @@ console.log(maxValue);
 const maxValue2 = movements2.reduce((acc, cur) => acc > cur ? acc : cur, movements2[0])
 console.log(maxValue2);
 
+
+///////////////////////////////////////
+// Coding Challenge #1
+/* 
+Julia and Kate are doing a study on dogs. So each of them asked 5 dog owners about their dog's age, and stored the data into an array (one array for each). For now, they are just interested in knowing whether a dog is an adult or a puppy. A dog is an adult if it is at least 3 years old, and it's a puppy if it's less than 3 years old.
+
+Create a function 'checkDogs', which accepts 2 arrays of dog's ages ('dogsJulia' and 'dogsKate'), and does the following things:
+
+1. Julia found out that the owners of the FIRST and the LAST TWO dogs actually have cats, not dogs! So create a shallow copy of Julia's array, and remove the cat ages from that copied array (because it's a bad practice to mutate function parameters)
+2. Create an array with both Julia's (corrected) and Kate's data
+3. For each remaining dog, log to the console whether it's an adult ("Dog number 1 is an adult, and is 5 years old") or a puppy ("Dog number 2 is still a puppy 🐶")
+4. Run the function for both test datasets
+
+HINT: Use tools from all lectures in this section so far 😉
+
+TEST DATA 1: Julia's data [3, 5, 2, 12, 7], Kate's data [4, 1, 15, 8, 3]
+TEST DATA 2: Julia's data [9, 16, 6, 8, 3], Kate's data [10, 5, 6, 1, 4]
+
+GOOD LUCK 😀
+*/
+console.log('Coding challenge 1 (Working with Arrays)'.padStart(35, '-').padEnd(55, '-'));
+//data from Julia
+const dataJ1 = [3, 5, 2, 12, 7];
+const dataJ2 = [9, 16, 6, 8, 3];
+
+//data fron Kate
+const dataK1 = [4, 1, 15, 8, 3];
+const dataK2 = [10, 5, 6, 1, 4];
+
+const checkDogs = (dogsJulia, dogsKate) => {
+  dogsJulia.splice(-2);
+  const corrJulData = dogsJulia.slice(-2);
+  const allAges = corrJulData.concat(dogsKate);
+  allAges.forEach((age, i, arr) => age >= 3
+    ?
+    console.log(`Dog number ${i + 1} is an adult, and is ${age} years old`)
+    :
+    console.log(`Dog number ${i + 1} is still a puppy 🐶`))
+}
+console.log('Check data 1'.padStart(35, '-').padEnd(55, '-'));
+checkDogs(dataJ1, dataK1)
+console.log('Check data 2'.padStart(35, '-').padEnd(55, '-'));
+checkDogs(dataJ2, dataK2)
+
 ///////////////////////////////////////
 // Coding Challenge #2
 
@@ -269,5 +271,37 @@ const calcAverageHumanAge2 = (ages) => {
 
 const avg1 = calcAverageHumanAge2(dataJ);
 const avg2 = calcAverageHumanAge2(dataK);
-
 console.log(avg1, avg2);
+
+//3) FIND METHOD
+// Data
+const account1 = {
+  owner: 'Zsolt Marku',
+  movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
+  interestRate: 1.2, // %
+  pin: 1111,
+};
+
+const account2 = {
+  owner: 'Barbara Marku',
+  movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+  interestRate: 1.5,
+  pin: 2222,
+};
+
+const accounts = [account1, account2];
+
+const firstWithdrawal = movements2.find(mov => mov < 0);
+console.log(movements2);
+console.log(firstWithdrawal);
+
+const findOwner = accounts.find(acc => acc.owner === 'Barbara Marku');
+console.log(findOwner);
+
+const findOwner2 = (accounts) => {
+  for (const account of accounts) {
+    if (account.owner === 'Barbara Marku')
+      console.log(account);
+  }
+};
+findOwner2(accounts)
