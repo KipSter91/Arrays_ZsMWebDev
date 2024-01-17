@@ -304,4 +304,19 @@ const findOwner2 = (accounts) => {
       console.log(account);
   }
 };
-findOwner2(accounts)
+findOwner2(accounts);
+
+//4) FINDINDEX METHOD
+const currentAccount = accounts[2];
+const currentAccount2 = accounts.at(0);
+
+const deleteAccount = (accs) => {
+  if(currentAccount2){
+    const index = accs.findIndex(acc => acc === currentAccount2)
+    accounts.splice(index, 1)
+  } else {
+    console.log('There is no such element in your array!');
+  }
+}
+deleteAccount(accounts);
+console.log(accounts);
