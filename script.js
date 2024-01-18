@@ -235,7 +235,7 @@ TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
 //////////////////////*/
 ///////////////////////
 
-const dataJ = [5, 2, 4, 1, 15, 8, 3];
+const dataJ = [5, 2, 4, 1, 15, 8, 3]; 
 const dataK = [16, 6, 10, 5, 6, 1, 4];
 
 //detailed way
@@ -320,3 +320,17 @@ const deleteAccount = (accs) => {
 }
 deleteAccount(accounts);
 console.log(accounts);
+
+//5) SOME AND EVERY METHOD
+//includes method
+//EQUALITY
+console.log(movements2);
+console.log(movements2.includes(-130));
+
+//SOME METHOD
+//some method gives back a boolean value
+console.log(movements2.some(mov => mov === -130));
+//CONDITION
+const anyDeposits = movements2.some(mov => mov > 1500);
+console.log(anyDeposits);
+
