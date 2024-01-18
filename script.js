@@ -318,7 +318,7 @@ const deleteAccount = (accs) => {
     console.log('There is no such element in your array!');
   }
 }
-deleteAccount(accounts);
+// deleteAccount(accounts);
 console.log(accounts);
 
 //5) SOME AND EVERY METHOD
@@ -348,3 +348,35 @@ const deposit = mov => mov > 0;
 console.log(movements2.some(deposit));
 console.log(movements2.every(deposit));
 console.log(movements2.filter(deposit));
+
+//6) FLAT AND FLATMAP METHOD
+//FLAT METHOD
+const arr6 = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arr6.flat());
+
+//flat method goes only one level deep
+const arr7 = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+console.log(arr7.flat());
+//if we want to go deeper we have to use the flat method with a parameter
+console.log(arr7.flat(2));
+
+//without chaining
+const allMov = acc => acc.movements;
+const accountMovements = accounts.map(allMov);
+console.log(accountMovements);
+
+const allMovements = accountMovements.flat();
+console.log(allMovements);
+
+const allBal = (acc, cur) => acc + cur;
+const overallBalance = allMovements.reduce(allBal, 0);
+console.log(overallBalance);
+
+//with chaining
+const overallBalance2 = accounts.map(allMov).flat().reduce(allBal, 0);
+console.log(overallBalance2);
+
+//FLATMAP METHOD
+//flatmap method goes only one level deep
+const overallBalance3 = accounts.flatMap(allMov).reduce(allBal, 0);
+console.log(overallBalance3);
