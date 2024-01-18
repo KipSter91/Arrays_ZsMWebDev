@@ -443,6 +443,11 @@ console.log(x);
 
 //Array.from FUNCTION
 //Array.from function doesn't mutate the original array
+//with array.from function there are 2 parameters:
+//1. which from we want to create the array
+//2. a map function (optional)
+//Array-like objects are objects that look like arrays.
+//They have indexes and length properties, so we can actually use them like arrays. (see below)
 const y = Array.from({ length: 7 }, () => 1); //it creates a new array with 7 elements and fills it with 1
 console.log(y);
 const z = Array.from({ length: 7 }, (_, i) => i + 1); //it creates a new array with 7 elements and fills it with the index numbers + 1
