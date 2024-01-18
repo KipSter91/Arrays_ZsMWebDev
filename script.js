@@ -235,7 +235,7 @@ TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
 //////////////////////*/
 ///////////////////////
 
-const dataJ = [5, 2, 4, 1, 15, 8, 3]; 
+const dataJ = [5, 2, 4, 1, 15, 8, 3];
 const dataK = [16, 6, 10, 5, 6, 1, 4];
 
 //detailed way
@@ -311,7 +311,7 @@ const currentAccount = accounts[2];
 const currentAccount2 = accounts.at(0);
 
 const deleteAccount = (accs) => {
-  if(currentAccount2){
+  if (currentAccount2) {
     const index = accs.findIndex(acc => acc === currentAccount2)
     accounts.splice(index, 1)
   } else {
@@ -334,3 +334,17 @@ console.log(movements2.some(mov => mov === -130));
 const anyDeposits = movements2.some(mov => mov > 1500);
 console.log(anyDeposits);
 
+//EVERY METHOD
+//every method gives back a boolean value
+//every method checks if every element of the array meets the condition
+console.log(movements2.every(mov => mov > 0));
+
+//here we check if every element of the array is divisible by 10 whitout remainder
+console.log(movements2.every(mov => mov = mov % 10 === 0));
+
+//separate callback
+//important for the dry principle, which means don't repeat yourself
+const deposit = mov => mov > 0;
+console.log(movements2.some(deposit));
+console.log(movements2.every(deposit));
+console.log(movements2.filter(deposit));
