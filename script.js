@@ -380,3 +380,48 @@ console.log(overallBalance2);
 //flatmap method goes only one level deep
 const overallBalance3 = accounts.flatMap(allMov).reduce(allBal, 0);
 console.log(overallBalance3);
+
+//SORT METHOD
+//sort method mutates the original array
+//sort method works with strings
+//sort method works with numbers as well but it converts them to strings
+//sort method works with strings based on the first character
+//sort method works with numbers based on the first digit
+
+//strings
+const owners = ['Zsolt', 'Barbara', 'Adam', 'Eva'];
+console.log(owners.sort()); //it works properly
+
+//numbers
+console.log(movements2);
+console.log(movements2.sort()); //it doesn't work properly
+
+//solution 1
+// ascending order
+console.log(movements2.sort((a, b) => {
+  if (a > b) {
+    return 1
+  } else {
+    return -1
+  }
+}));
+//descending order
+console.log(movements2.sort((a, b) => {
+  if (a < b) {
+    return 1
+  } else {
+    return -1
+  }
+}));
+
+//solution 2
+//ascending order with ternary operator
+console.log(movements2.sort((a, b) => a > b ? 1 : -1));
+//descending order with ternary operator
+console.log(movements2.sort((a, b) => a < b ? 1 : -1));
+
+//solution 3
+//ascending order with other logic
+console.log(movements2.sort((a, b) => a - b));
+//descending order with other logic
+console.log(movements2.sort((a, b) => b - a));
