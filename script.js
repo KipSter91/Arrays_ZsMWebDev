@@ -425,3 +425,29 @@ console.log(movements2.sort((a, b) => a < b ? 1 : -1));
 console.log(movements2.sort((a, b) => a - b));
 //descending order with other logic
 console.log(movements2.sort((a, b) => b - a));
+
+//FILL METHOD
+//fill method mutates the original array
+//fill method fills the array with the given value
+//fill method has 2 optional parameters, the first is the start index, the second is the end index
+const x = new Array(7);
+console.log(x );
+
+//fill method with 1 parameter
+x.fill(1);
+console.log(x);
+x.fill(2, 3); //it starts to fill the array from the 3rd index
+console.log(x);
+x.fill(3, 2, 5);//it starts to fill the array from the 2nd index and stops at the 5th index (5th index is not included)
+console.log(x);
+
+//Array.from FUNCTION
+//Array.from function doesn't mutate the original array
+const y = Array.from({ length: 7 }, () => 1); //it creates a new array with 7 elements and fills it with 1
+console.log(y);
+const z = Array.from({ length: 7 }, (_, i) => i + 1); //it creates a new array with 7 elements and fills it with the index numbers + 1
+console.log(z);
+
+//Generate 100 random dice rolls
+const dice = Array.from({ length: 100 }, () => Math.trunc(Math.random() * 6) + 1);
+console.log(dice);
