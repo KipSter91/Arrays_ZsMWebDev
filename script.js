@@ -277,14 +277,14 @@ console.log(avg1, avg2);
 // Data
 const account1 = {
   owner: 'Zsolt Marku',
-  movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
+  movements: [200, 450, 1500, 16000, 100, -150, 750, -1500],
   interestRate: 1.2, // %
   pin: 1111,
 };
 
 const account2 = {
   owner: 'Barbara Marku',
-  movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+  movements: [8500, -30, 3200, 5000, 1500, 1200, -150, -2000],
   interestRate: 1.5,
   pin: 2222,
 };
@@ -431,7 +431,7 @@ console.log(movements2.sort((a, b) => b - a));
 //fill method fills the array with the given value
 //fill method has 2 optional parameters, the first is the start index, the second is the end index
 const x = new Array(7);
-console.log(x );
+console.log(x);
 
 //fill method with 1 parameter
 x.fill(1);
@@ -456,3 +456,87 @@ console.log(z);
 //Generate 100 random dice rolls
 const dice = Array.from({ length: 100 }, () => Math.trunc(Math.random() * 6) + 1);
 console.log(dice);
+
+//Array method practice
+//1. Caltulate the total balance of the bank accounts
+const totalAccountsDeposits = accounts
+  .flatMap(acc => acc.movements)
+  .filter(el => el > 0)
+  .reduce((acc, cur) => acc + cur, 0)
+console.log(totalAccountsDeposits);
+
+//2. How many deposits are there in the bank accounts with at least 1000 euro
+//Solution 1. (over-structured version... just for fun :D )
+const depositsAtLeast1000 = (acc) => {
+  const text = {
+    text1: ['is', 'are'],
+    text2: ['deposit', 'deposits'],
+    text3: 'in the bank accounts with at least 1000 euro'
+  }
+  const deposits = acc
+    .flatMap(acc => acc.movements)
+    .filter(mov => mov >= 1000)
+    .length;
+
+  deposits <= 1 ?
+    console.log(`There ${text.text1[0]} ${deposits} ${text.text2[0]} ${text.text3}.`)
+    :
+    console.log(`There ${text.text1[1]} ${deposits} ${text.text2[1]} ${text.text3}.`)
+    ;
+};
+depositsAtLeast1000(accounts);
+
+//Solution 2. (use reduce method to count the number of deposits)
+//prefixed ++ operator
+let variable = 10;
+variable++;
+console.log(variable++); // here the value is not increased yet
+console.log(++variable); // here with the prefixed operator the value will be increased immedietaly
+
+
+const deposits2AtLeast1000 = (accs) => {
+  console.log(accs
+    .flatMap(acc => acc.movements)
+    .reduce((count, cur) => cur >= 1000 ? ++count : count, 0));
+};
+deposits2AtLeast1000(accounts);
+
+//3. Creating an object with reduce method which contains the sum of the deposits and the withdrawals
+//Reduce method is like the SWISS KNIFE of the arrays ;)
+
+const ObjDepoWithdraw = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((obj, cur) => {
+    obj[cur > 0 ? 'deposits' : 'withdrawals'] += cur; //we use bracket notation because we want to use a variable as a property name
+    return obj; //we have to return the object because we want to use it in the next iteration
+  }, { deposits: 0, withdrawals: 0 }); //the initial value is an object with 2 properties
+
+console.log(ObjDepoWithdraw);
+
+//4. Create a function which converts any string to a title case
+const convertTitleCase = (str) => {
+  const exceptions = [
+    'a', 'an', 'the', 'it',
+    'and', 'but', 'or', 'nor', 'for', 'yet', 'so',
+    'in', 'on', 'at', 'by', 'with', 'from', 'to', 'of', 'as',
+    'after', 'before', 'between', 'among', 'through', 'during',
+    'without', 'under', 'over', 'around', 'beneath', 'beside',
+    'despite', 'along', 'except', 'inside', 'outside'
+  ];
+
+  const FirstCharToUpper = (x) => {
+    return x.charAt(0).toUpperCase() + x.slice(1)
+  };
+
+  const lowerAndSplit = (text) => {
+    return text
+      .toLowerCase()
+      .split(' ')
+      .map((word, i, arr) => i === 0 || i === arr.length - 1 || !exceptions.includes(word) ? FirstCharToUpper(word) : word)
+      .join(' ');
+  };
+  return lowerAndSplit(str);
+}
+
+const title = "This is a perfect example for this function it";
+console.log(convertTitleCase(title));
