@@ -540,3 +540,91 @@ const convertTitleCase = (str) => {
 
 const title = "This is a perfect example for this function it";
 console.log(convertTitleCase(title));
+
+
+//The New findLast and findLastIndex Methods
+console.log(movements);
+
+//findLast method
+const lastWithdrawal = movements.findLast(mov => mov < 0);
+console.log(lastWithdrawal);
+
+//findLastindex method
+const lastLargeMovementIndex = movements.findLastIndex(mov => Math.abs(mov) > 2000);
+console.log(lastLargeMovementIndex);
+console.log(`Your latest large movement was ${movements.length - lastLargeMovementIndex} movements ago.`);
+
+
+//Array Grouping (Object.groupBy)
+console.log(movements);
+const groupedMovements = Object.groupBy(movements, mov => mov > 0 ? 'deposit' : 'withdrawal');
+console.log(groupedMovements);
+
+
+const arr8 = Object.entries(groupedMovements);
+console.log(arr8);
+
+const obj = Object.fromEntries(arr8);
+console.log(obj);
+
+const allValues = arr8.flatMap(entry => entry[1]);
+console.log(allValues);
+
+const onlyDeposit = (arr8.find(entry => entry[0] === 'deposit'))[1] ?? [];
+console.log(onlyDeposit);
+
+
+
+const account3 = {
+  owner: 'Zsolt Marku',
+  movements: [],
+  interestRate: 1.2, // %
+  pin: 1111,
+  type: 'premium'
+};
+
+const account4 = {
+  owner: 'Barbara Marku',
+  movements: [8500, -30, 3200, 5000, 1500, 1200, -150, -2000],
+  interestRate: 1.5,
+  pin: 2222,
+  type: 'standard'
+};
+
+const account5 = {
+  owner: 'Zsolt Marku',
+  movements: [200, 450],
+  interestRate: 1.2, // %
+  pin: 1111,
+  type: 'basic'
+};
+
+const account6 = {
+  owner: 'Barbara Marku',
+  movements: [8500, -30, 3200, 5000, 1500],
+  interestRate: 1.5,
+  pin: 2222,
+  type: 'premium'
+};
+
+const accounts2 = [account3, account4, account5, account6];
+console.log(accounts2);
+
+const groupedByActivity = Object.groupBy(accounts2, account => {
+  const activityCount = account.movements.length;
+   if (activityCount >= 8)
+    return 'very active'
+  if (activityCount >= 5)
+    return 'active'
+  if (activityCount >= 2)
+    return 'moderate'
+  else
+    return 'inactive'
+}
+);
+
+console.log(groupedByActivity);
+
+
+const groupedByType = Object.groupBy(accounts2, ({type}) => type);
+console.log(groupedByType);
