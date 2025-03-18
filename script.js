@@ -612,7 +612,7 @@ console.log(accounts2);
 
 const groupedByActivity = Object.groupBy(accounts2, account => {
   const activityCount = account.movements.length;
-   if (activityCount >= 8)
+  if (activityCount >= 8)
     return 'very active'
   if (activityCount >= 5)
     return 'active'
@@ -626,5 +626,38 @@ const groupedByActivity = Object.groupBy(accounts2, account => {
 console.log(groupedByActivity);
 
 
-const groupedByType = Object.groupBy(accounts2, ({type}) => type);
+const groupedByType = Object.groupBy(accounts2, ({ pin }) => pin);
 console.log(groupedByType);
+
+
+//Non-Destructive Alternatives: toResversed, toSorted, toSpliced, with
+//.toReversed
+//mutate the original array
+console.log(onlyDeposit);
+const reversedMovements = onlyDeposit.reverse();
+console.log(reversedMovements);
+console.log(onlyDeposit);
+
+const reservedMovements2 = onlyDeposit.toReversed();
+console.log(reservedMovements2);
+console.log(onlyDeposit);
+
+//.toSorted()
+//mutate the original array
+// const sortedArray = onlyDeposit.sort((a, b) => a - b);
+// console.log(sortedArray);
+
+const sortedArray2 = onlyDeposit.toSorted((a, b) => b - a);
+console.log(sortedArray2);
+
+const sortedArray3 = onlyDeposit.toSorted((a, b) => a - b);
+console.log(sortedArray3);
+console.log(onlyDeposit);
+
+//mutate the original array
+sortedArray3[0] = 20000;
+console.log(sortedArray3);
+
+const newOnlyDeposit = sortedArray3.with(0, 10000);
+console.log(sortedArray3);
+console.log(newOnlyDeposit);
